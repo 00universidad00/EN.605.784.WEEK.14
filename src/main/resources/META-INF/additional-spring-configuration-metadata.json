@@ -1,0 +1,9 @@
+{
+  "properties": [
+    {
+      "name": "max.course.capacity",
+      "type": "java.lang.Integer",
+      "description": "Max number of students allowed to register for a course ."
+    }
+  ]
+}
