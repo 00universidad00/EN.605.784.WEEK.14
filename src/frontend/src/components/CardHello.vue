@@ -6,7 +6,11 @@
         Juliet Capulets
       </strong>
     </p>
-    <button class="button is-link is-outlined mt-6">Register for a class</button>
+    <router-link
+        :to="{name : 'Registration'}"
+        class="button is-link is-outlined mt-6">
+      Register for a class
+    </router-link>
   </div>
 </template>
 
@@ -15,7 +19,3 @@ export default {
   name: "card-hello"
 }
 </script>
-
-<style scoped>
-
-</style>

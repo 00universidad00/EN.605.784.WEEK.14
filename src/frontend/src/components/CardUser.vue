@@ -12,9 +12,8 @@
           <p class="subtitle is-6">@juliet1234</p>
         </div>
       </div>
-      <div class="content has-text-left">
-        <div>04/17/1988</div>
-        <div>Address</div>
+      <div class="content">
+        <router-link :to="{name: 'Profile'}"><button class="button is-ghost">Edit Profile</button></router-link>
       </div>
     </div>
   </div>

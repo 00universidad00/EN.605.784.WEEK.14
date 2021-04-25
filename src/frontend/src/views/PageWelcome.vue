@@ -22,7 +22,3 @@ export default {
   components: {Body, CardHello, CardUser, Grid}
 }
 </script>
-
-<style scoped>
-
-</style>
