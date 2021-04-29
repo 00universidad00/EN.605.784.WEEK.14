@@ -55,20 +55,20 @@ public class DatabaseService {
         // create user Romeo
         Student romeo = new Student();
         romeo.setId("admin");
-        romeo.setFirstName("Romeo");
-        romeo.setLastName("Montagues");
+        romeo.setFirst("Romeo");
+        romeo.setLast("Montagues");
         romeo.setDob("01/01/1988");
-        romeo.setAddress("1st Street, Sierra Vista, AZ 85625");
+        romeo.setAddress("1st Street, Sierra Vista, AZ, 85625");
         // add Romeo to DB
         studentService.addStudent(romeo);
 
         // Create user Juliet
         Student juliet = new Student();
-        juliet.setId("student");
-        juliet.setFirstName("Juliet");
-        juliet.setLastName("Capulets");
-        juliet.setDob("01/01/1991");
-        juliet.setAddress("1st Street, San Juan, PR 00957");
+        juliet.setId("juliet1234");
+        juliet.setFirst("Juliet");
+        juliet.setLast("Capulets");
+        juliet.setDob("1991-04-17");
+        juliet.setAddress("1st Street, San Juan, PR, 00957");
         // add juliet to DB
         studentService.addStudent(juliet);
     }
@@ -78,7 +78,7 @@ public class DatabaseService {
         Course course2 = courseService.getCourseById("605.785").orElse(null);
         Course course4 = courseService.getCourseById("605.787").orElse(null);
         // get student
-        Optional<Student> juliet = studentService.getStudentById("student");
+        Optional<Student> juliet = studentService.getStudentById("juliet1234");
         // register juliet for class and save student to db
         if (juliet.isPresent()) {
             juliet.get().registerForCourse(course2);

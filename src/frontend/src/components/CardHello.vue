@@ -3,7 +3,7 @@
     <h1 class="title is-1 has-text-link">Hello!</h1>
     <p>Welcome to the Student Registration Site
       <strong>
-        Juliet Capulets
+        {{student.first}} {{student.last}}
       </strong>
     </p>
     <router-link
@@ -15,7 +15,15 @@
 </template>
 
 <script>
+import {mapState} from "vuex";
+
 export default {
-  name: "card-hello"
+  name: "card-hello",
+  computed: {
+    ...mapState(['student'])
+  },
+  created() {
+    this.$store.dispatch('loadStudent');
+  }
 }
 </script>

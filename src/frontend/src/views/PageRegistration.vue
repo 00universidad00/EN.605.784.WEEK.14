@@ -4,12 +4,15 @@
   <div class="field is-grouped">
     <div class="control is-expanded">
       <div class="select is-fullwidth">
-        <Select value="#{registrationController.selectedCourseId}">
-        </Select>
+        <select v-model="selected">
+          <option v-for="course in courses" :key="course.id" v-bind:value="course.id">
+            {{ course.id }} - {{ course.name }}
+          </option>
+        </select>
       </div>
     </div>
     <p class="control">
-      <button class="button is-success">Register</button>
+      <button class="button is-success" v-on:click="register">Register</button>
     </p>
     <p class="control">
       <router-link :to="{name: 'Welcome'}">
@@ -22,9 +25,29 @@
 
 <script>
 import Body from "@/elements/Body";
+import {mapState} from "vuex";
 
 export default {
   name: "PageRegistration",
-  components: {Body}
+  components: {Body},
+  created() {
+    this.$store.dispatch('loadCourses');
+    this.$store.dispatch('loadStudent');
+  },
+  data() {
+    return {
+      selected: '',
+    }
+  },
+  computed: {
+    ...mapState(['courses']),
+    ...mapState(['student'])
+  },
+  methods: {
+    register() {
+      console.log(this.selected);
+      this.$store.dispatch('registerStudent', this.student.id + "/to/" + this.selected);
+    }
+  }
 }
 </script>

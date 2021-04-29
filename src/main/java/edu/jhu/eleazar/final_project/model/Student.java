@@ -3,6 +3,7 @@ package edu.jhu.eleazar.final_project.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.experimental.Delegate;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -15,8 +16,8 @@ import java.util.Set;
 public class Student implements Serializable {
     @Id
     private String id;
-    private String firstName;
-    private String lastName;
+    private String first;
+    private String last;
     private String dob;
     private String address;
 

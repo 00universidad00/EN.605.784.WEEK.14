@@ -17,7 +17,6 @@ public class Course implements Serializable {
     private String id;
     private String name;
 
-    @JsonManagedReference
     @ManyToMany(mappedBy = "courses", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private Set<Student> students;
 }

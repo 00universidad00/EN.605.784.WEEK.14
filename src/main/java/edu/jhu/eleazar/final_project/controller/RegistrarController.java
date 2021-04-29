@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 @Component
 @RestController
 @RequestMapping(value = "/api/registrar/")
+@CrossOrigin(origins = "http://localhost:3000")
 @PropertySource("classpath:application.properties")
 public class RegistrarController {
 
