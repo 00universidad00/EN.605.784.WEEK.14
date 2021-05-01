@@ -47,9 +47,9 @@ export default new Vuex.Store({
         registerStudent({commit, dispatch}, params) {
             Vue.axios.post("registrar/add/" + params).then(result => {
                 commit('SAVE_STUDENT', result.data);
-                dispatch('notification/showSuccess', 'Student added to course');
+                dispatch('notification/showSuccess', 'Successfully registered: ' + params);
             }).catch(error => {
-                dispatch('notification/showError', 'Failed to add student to course');
+                dispatch('notification/showError', 'Course is full or you are already registered: ' + params);
                 throw new Error(`API ${error}`);
             });
         }

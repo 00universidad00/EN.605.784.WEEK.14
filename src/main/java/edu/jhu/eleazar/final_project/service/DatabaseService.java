@@ -78,12 +78,12 @@ public class DatabaseService {
         Course course2 = courseService.getCourseById("605.785").orElse(null);
         Course course4 = courseService.getCourseById("605.787").orElse(null);
         // get student
-        Optional<Student> juliet = studentService.getStudentById("juliet1234");
-        // register juliet for class and save student to db
-        if (juliet.isPresent()) {
-            juliet.get().registerForCourse(course2);
-            juliet.get().registerForCourse(course4);
-            studentService.addStudent(juliet.get());
+        Optional<Student> romeo = studentService.getStudentById("admin");
+        // register for class and save student to db
+        if (romeo.isPresent()) {
+            romeo.get().registerForCourse(course2);
+            romeo.get().registerForCourse(course4);
+            studentService.addStudent(romeo.get());
         }
     }
 }

@@ -3,7 +3,6 @@ package edu.jhu.eleazar.final_project.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.experimental.Delegate;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -30,7 +29,7 @@ public class Student implements Serializable {
     )
     private Set<Course> courses;
 
-    public void registerForCourse(Course course){
+    public void registerForCourse(Course course) {
         this.getCourses().add(course);
     }
 }

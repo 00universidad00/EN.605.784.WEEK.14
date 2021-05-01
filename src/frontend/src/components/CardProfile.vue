@@ -1,29 +1,34 @@
 <template>
+
   <div class="has-text-left">
-    <label class="label">Date of birth</label>
-    <b-field>
+    <b-field label="Date of birth *">
       <b-datepicker
           v-model="birthday"
+          :max-date="new Date(new Date().setDate(new Date().getDate()-1))"
           editable
           trap-focus>
       </b-datepicker>
     </b-field>
-    <div class="field">
-      <label class="label">Address</label>
-      <p class="control is-expanded">
-        <input v-model="address" class="input" type="text">
-      </p>
-    </div>
+    <b-field label="Address *">
+      <b-input
+          v-model="address"
+          pattern="^(?!\s*$).+"
+          required type="text"
+          validation-message="Invalid address">
+      </b-input>
+    </b-field>
     <div class="field is-horizontal">
       <div class="field-body">
+        <b-field label="City *">
+          <b-input
+              v-model="city"
+              pattern="^(?!\s*$).+"
+              required type="text"
+              validation-message="Invalid city">
+          </b-input>
+        </b-field>
         <div class="field">
-          <label class="label">City</label>
-          <p class="control is-expanded">
-            <input v-model="city" class="input" type="text">
-          </p>
-        </div>
-        <div class="field">
-          <label class="label">State</label>
+          <label class="label">State *</label>
           <div class="control">
             <div class="select">
               <select v-model="state">
@@ -34,7 +39,7 @@
             </div>
           </div>
         </div>
-        <b-field label="Zip Code">
+        <b-field label="Zip Code *">
           <b-input
               v-model="zip"
               pattern="^[0-9]{5}(?:-[0-9]{4})?$"
@@ -46,13 +51,13 @@
     </div>
     <div class="field is-grouped is-grouped-centered mt-6">
       <p class="control">
-        <a class="button is-success" v-on:click="save"> Save </a>
+        <button :disabled="isDisabled()" class="button is-success" v-on:click="save"> Save</button>
       </p>
       <p class="control">
         <router-link :to="{name: 'Welcome'}">
-          <a class="button is-light">
+          <button class="button is-light">
             Cancel
-          </a>
+          </button>
         </router-link>
       </p>
     </div>
@@ -154,6 +159,9 @@ export default {
       this.student.address = this.address + ", " + this.city + ", " + this.state + ", " + this.zip;
       this.student.dob = this.birthday.toISOString().substring(0, 10);
       this.$store.dispatch('saveStudent', this.student);
+    },
+    isDisabled() {
+      return !this.address || !this.city || !this.zip;
     }
   }
 }
